@@ -1,0 +1,35 @@
+.containerForLoader {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	min-width: 100vw;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 6;
+    background-color: burlywood;
+}
+
+.loader {
+	--dim: 150px;
+	width: var(--dim);
+	height: var(--dim);
+	border: 7px solid #9f7b52;
+
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+	border-radius: 50%;
+	animation: spin_51 1.5s infinite linear;
+}
+
+@keyframes spin_51 {
+    from {
+        transform: rotate(0)
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
+}
