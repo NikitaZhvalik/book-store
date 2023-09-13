@@ -1,16 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Loader from '../Loader/Loader';
 
 const Main = () => {
-	const books = useSelector((state) => state.books.books)
+	const books = useSelector((state) => state.books.books.items)
 
 	return (
 		<div className='main'>
-			{/* {isLoading && <Loader />} */}
-			<h2>Найдено книг: {books.length}</h2>
+			<h2>Найдено книг: {books === undefined ? 0 : books.length}</h2>
 			<ul className='box-books'>
-				{books.map((book) => (
+				{books?.map((book) => (
 					<li className='book' key={book.id}>
 						<Link to={`/book/${book.id}`}>
 							<img className='book__img' src={book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail} alt="" />

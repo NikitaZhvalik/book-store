@@ -2,18 +2,20 @@ import FilterCategories from "./FilterCategories";
 import FilterNewest from "./FilterNewest";
 import Search from "./Search";
 
-import { useDispatch } from 'react-redux';
-import { fetchBooks } from "../../helpers/useFetchBooks";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBooks } from "../../toolkitRedux/booksReducer";
 
 
 const Header = () => {
-	const dispatch = useDispatch();
-	const query = useSelector((state) => state.query.query) //TODO
+	const dispatch = useDispatch()
+    
+	const query = useSelector((state) => state.query.query) //todo
+	const filterCategories = useSelector((state) => state.filterCategories.filterCategories) //todo
+    const filterNewest = useSelector((state) => state.filterNewest.filterNewest) //todo
 
     function handleSubmit(e) {
         e.preventDefault()
-        dispatch(fetchBooks({query})) //TODO
+        dispatch(getBooks({query, filterCategories, filterNewest}))
     }
 
     return (

@@ -7,7 +7,7 @@ import "./style.css";
 const BookDescr = () => {
     const {id} = useParams()
 
-    const [data, setData] = useState('')
+    const [data, setData] = useState('') //todo переписать на redux
 
     useEffect(() => {
         fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)

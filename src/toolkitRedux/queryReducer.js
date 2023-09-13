@@ -1,13 +1,18 @@
-import { createReducer ,createAction} from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-const defaultState = {
-    query: '',
+const initialState = {
+    query: ''
 }
 
-export const queryAction = createAction('ADD_QUERY');
-
-export default createReducer(defaultState, {
-    [queryAction]: function(state, action) {
-        state.query = action.payload
+export const querySlice = createSlice({
+    name: 'query',
+    initialState,
+    reducers: {
+        setQuery: (state, action) => {
+            state.query = action.payload
+        }
     }
 })
+
+export const {setQuery} = querySlice.actions
+export default querySlice.reducer
