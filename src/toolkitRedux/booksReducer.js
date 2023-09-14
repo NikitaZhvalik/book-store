@@ -7,14 +7,12 @@ const initialState = {
 }
 
 const key = "AIzaSyCd535-0dsJ9kCIUPlVYnahGx0esWYFhTA"
-const minQuantityBooks = 0
-const maxQuantityBooks = 8 //TODO Поменять на 40
 
 export const getBooks = createAsyncThunk(
     'books/getBooks',
-    async ({query, filterCategories, filterNewest}, {rejectWithValue, dispatch}) => {
+    async ({query, filterCategories, filterNewest, startIndex, maxResults}, {rejectWithValue, dispatch}) => {
         dispatch(setLoading(true))
-        const server = `https://www.googleapis.com/books/v1/volumes?q=${query}+terms${filterCategories === "all" ? '' : "+subject" + filterCategories}:&orderBy=${filterNewest}&startIndex=${minQuantityBooks}&maxResults=${maxQuantityBooks}&key=${key}`
+        const server = `https://www.googleapis.com/books/v1/volumes?q=${query}+terms${filterCategories === "all" ? '' : "+subject" + filterCategories}:&orderBy=${filterNewest}&startIndex=${startIndex}&maxResults=${maxResults}&key=${key}`
         const res = await axios.get(server)
         dispatch(setBooks(res?.data))
         dispatch(setLoading(false))
@@ -35,7 +33,7 @@ export const booksSlice = createSlice({
     extraReducers: {
         [getBooks.fulfilled]: () => console.log('fulfilled'),
         [getBooks.pending]: () => console.log('pending'),
-        [getBooks.rejected]: () => alert('rejected'),
+        [getBooks.rejected]: () => alert('server error'),
     }
 })
 

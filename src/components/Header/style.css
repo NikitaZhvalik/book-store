@@ -16,3 +16,9 @@
 .header__row {
     gap: 20px;
 }
+
+@media (max-width: 500px) {
+    .header__row {
+        flex-direction: column;
+    }
+}

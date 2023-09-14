@@ -10,13 +10,13 @@ import './style.css';
 const Header = () => {
 	const dispatch = useDispatch()
     
-	const query = useSelector((state) => state.query.query) //todo
-	const filterCategories = useSelector((state) => state.filterCategories.filterCategories) //todo
-    const filterNewest = useSelector((state) => state.filterNewest.filterNewest) //todo
+	const query = useSelector((state) => state.query.query)
+	const filterCategories = useSelector((state) => state.filterCategories.filterCategories)
+    const filterNewest = useSelector((state) => state.filterNewest.filterNewest)
 
     function handleSubmit(e) {
         e.preventDefault()
-        dispatch(getBooks({query, filterCategories, filterNewest}))
+        dispatch(getBooks({query, filterCategories, filterNewest, startIndex: 0, maxResults: 30}))
     }
 
     return (

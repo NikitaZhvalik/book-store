@@ -1,15 +1,14 @@
 .loader-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	min-width: 100vw;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 6;
-    background-color: burlywood;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 .loader {

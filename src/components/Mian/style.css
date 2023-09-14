@@ -5,6 +5,7 @@
 
 .box-books {
     margin-top: 10px;
+    margin-bottom: 20px;
     
     display: flex;
     flex-wrap: wrap;
@@ -67,4 +68,32 @@
     font-weight: 400;
     line-height: 22px;
     letter-spacing: 0em;    
+}
+
+.box-books__btn {
+    height: 50px;
+    width: 200px;
+    margin-bottom: 30px;
+
+    background-color: #daa56a;
+
+    border-radius: 10px;
+    font-size: 1.5rem;
+    color: #ac7c47;;
+    text-align: center;
+
+    transition: background-color ease-in .3s;
+}
+
+.box-books__btn:hover {
+    background-color: #9f7b52;
+    color: #daa56a;
+}
+
+@media (max-width: 500px) {
+    .box-books {
+        display: flex;
+        flex-direction: column;
+        align-items: center
+    }
 }
