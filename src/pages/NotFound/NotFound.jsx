@@ -1,4 +1,4 @@
-import BtnBackMain from '../../components/BtnBackMain/BtnBackMain';
+import BtnBackMain from '../../common/BtnBackMain/BtnBackMain';
 
 import './style.css'
 

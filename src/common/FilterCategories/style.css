@@ -1,0 +1,9 @@
+.filterCategories-box {
+    display: flex;
+}
+
+.filterCategories {
+    margin-left: 6px;
+
+    background-color: #c19463;
+}

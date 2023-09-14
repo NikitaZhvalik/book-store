@@ -1,4 +1,4 @@
-.btn {
+.btnBack {
     height: 50px;
     width: 200px;
     margin-bottom: 30px;
@@ -13,7 +13,7 @@
     transition: background-color ease-in .3s;
 }
 
-.btn:hover {
+.btnBack:hover {
     background-color: #9f7b52;
     color: #daa56a;
 }

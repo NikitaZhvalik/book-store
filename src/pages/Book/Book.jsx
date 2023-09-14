@@ -1,11 +1,9 @@
-import BookDescr from "../../components/BookID/BookID";
-import Header from "../../components/Header/Header";
+import BookPage from "../../components/BookPage/BookPage";
 
 const Book = () => {
 return (
 	<div className="container">
-		<Header />
-		<BookDescr />
+		<BookPage />
 	</div>
 );
 };

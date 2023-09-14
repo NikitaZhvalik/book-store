@@ -1,4 +1,7 @@
-.bookPage__wrapper {
+.bookPage {    
+    padding-top: 100px;
+    
+    display: flex;
     flex-wrap: wrap;
     gap: 40px;
 }
@@ -10,7 +13,7 @@
     border-radius: 10px;
 }
 
-.bookPage-box {
+.bookPage__box {
     max-width: 420px;
 
     display: flex;

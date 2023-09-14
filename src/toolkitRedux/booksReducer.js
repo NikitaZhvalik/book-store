@@ -3,6 +3,7 @@ import axios from "axios";
 
 const initialState = {
 	books: [],
+    isLoading: false
 }
 
 const key = "AIzaSyCd535-0dsJ9kCIUPlVYnahGx0esWYFhTA"
@@ -10,15 +11,13 @@ const minQuantityBooks = 0
 const maxQuantityBooks = 8 //TODO Поменять на 40
 
 export const getBooks = createAsyncThunk(
-    'books/getBooks', 
+    'books/getBooks',
     async ({query, filterCategories, filterNewest}, {rejectWithValue, dispatch}) => {
-        const server = `https://www.googleapis.com/books/v1/volumes?q=${query}+terms+subject${filterCategories}:&orderBy=${filterNewest}&startIndex=${minQuantityBooks}&maxResults=${maxQuantityBooks}&key=${key}`
+        dispatch(setLoading(true))
+        const server = `https://www.googleapis.com/books/v1/volumes?q=${query}+terms${filterCategories === "all" ? '' : "+subject" + filterCategories}:&orderBy=${filterNewest}&startIndex=${minQuantityBooks}&maxResults=${maxQuantityBooks}&key=${key}`
         const res = await axios.get(server)
-        console.log("🚀 ~ file: booksReducer.js:17 ~ server:", server)
-        dispatch(setBooks(res.data))
-
-        console.log("filterNewest", filterCategories);
-        console.log("filterNewest", filterNewest);
+        dispatch(setBooks(res?.data))
+        dispatch(setLoading(false))
     }
 )
 
@@ -28,19 +27,17 @@ export const booksSlice = createSlice({
     reducers: {
         setBooks: (state, action) => {
             state.books = action.payload
+        },
+        setLoading: (state, action) => {
+            state.isLoading = action.payload
         }
     },
     extraReducers: {
         [getBooks.fulfilled]: () => console.log('fulfilled'),
-        [getBooks.pending]: () => {
-            console.log('pending');
-            // <Loader /> //TODO
-        },
-        [getBooks.rejected]: () => console.log('rejected'),
+        [getBooks.pending]: () => console.log('pending'),
+        [getBooks.rejected]: () => alert('rejected'),
     }
 })
 
-export const {setBooks} = booksSlice.actions
+export const {setBooks, setLoading} = booksSlice.actions
 export default booksSlice.reducer
-
-// https://www.googleapis.com/books/v1/volumes?q=rw+terms&orderBy=relevance&startIndex=0&maxResults=40&key=AIzaSyCd535-0dsJ9kCIUPlVYnahGx0esWYFhTA

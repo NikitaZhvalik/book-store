@@ -1,6 +1,9 @@
-import { filterCategories } from "./const";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilterCategories } from "../../toolkitRedux/filterCategoriesReducer";
+
+import { filterCategories } from "../../components/Header/const";
+
+import './style.css';
 
 const FilterCategories = () => {
     const dispatch = useDispatch()
@@ -12,9 +15,9 @@ const FilterCategories = () => {
     }
 
     return (
-        <div className="range">
+        <div className="filterCategories-box">
             <p>Categories:</p>
-            <select name="categories" onChange={handleChange} value={filterValue}>
+            <select className="filterCategories" name="categories" onChange={handleChange} value={filterValue}>
                 return {filterCategories.map((filter) => <option value={filter.name} key={filter.name}>{filter.name}</option>)}
             </select>
         </div>

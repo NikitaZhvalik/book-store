@@ -1,6 +1,8 @@
 import { setFilterNewest } from "../../toolkitRedux/filterNewestReducer";
 import { useDispatch, useSelector } from "react-redux";
 
+import './style.css'
+
 const FilterNewest = () => {
 	const dispatch = useDispatch()
 	const filterValue = useSelector((state) => state.filterNewest.filterNewest)
@@ -11,14 +13,9 @@ const FilterNewest = () => {
 	}
 
 	return (
-		<div className="range">
+		<div className="filterNewest-box">
 			<p>Сортировка по:</p>
-			<select
-				onChange={handleChange}
-				value={filterValue}
-				name="categories"
-				id="category-select"
-			>
+			<select className="filterNewest" name="categories" onChange={handleChange} value={filterValue}>
 				<option value="relevance">relevance</option>
 				<option value="newest">newest</option>
 			</select>

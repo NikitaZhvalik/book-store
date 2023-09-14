@@ -5,7 +5,7 @@ import './style.css';
 const BtnBackMain = () => {
     return (
         <Link to={"/"}>
-            <button className="btn">
+            <button className="btnBack">
                 Back to main
             </button>
         </Link>

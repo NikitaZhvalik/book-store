@@ -1,0 +1,10 @@
+.filterNewest-box {
+    display: flex;
+}
+
+.filterNewest {
+    margin-left: 6px;
+    
+    background-color: #c19463;
+}
+
