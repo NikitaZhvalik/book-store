@@ -3,6 +3,8 @@ import { getBooks } from "../../toolkitRedux/booksReducer";
 
 import FilterCategories from "../../common/FilterCategories/FilterCategories";
 import FilterNewest from "../../common/FilterNewest/FilterNewest";
+import { setStartIndex, setMaxIndex } from '../../toolkitRedux/indexBooksReducer';
+
 import Search from "../../common/Search/Search";
 
 import './style.css';
@@ -16,7 +18,9 @@ const Header = () => {
 
     function handleSubmit(e) {
         e.preventDefault()
-        dispatch(getBooks({query, filterCategories, filterNewest, startIndex: 0, maxResults: 30}))
+        dispatch(getBooks({query, filterCategories, filterNewest, startIndex: 0, maxResults: 10}))
+        dispatch(setStartIndex(0))
+        dispatch(setMaxIndex(10))
     }
 
     return (
